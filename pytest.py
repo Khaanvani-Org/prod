@@ -296,3 +296,99 @@ def test_mine_sustainability(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("How can mining be more sustainable?")
     assert "To make mining more sustainable," in response
+
+def test_mine_waste_management(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How should mining waste be managed?")
+    assert "Mining waste should be managed through" in response
+
+def test_mine_community_engagement(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Why is community engagement important for mining projects?")
+    assert "Community engagement is crucial for mining projects" in response
+
+def test_mine_tailings_disposal(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What are the best practices for tailings disposal in mining?")
+    assert "Best practices for tailings disposal in mining include" in response
+
+def test_mine_rehabilitation(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can a mined-out area be rehabilitated?")
+    assert "To rehabilitate a mined-out area, it is essential to" in response
+
+def test_mine_geoexploration(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What is the role of geological exploration in mining?")
+    assert "Geological exploration plays a significant role in mining" in response
+
+def test_mine_ore_processing(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How is ore processed in a mine?")
+    assert "Ore processing in a mine involves" in response
+
+def test_mine_drilling_methods(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What are the common drilling methods used in mining?")
+    assert "Common drilling methods used in mining include" in response
+
+def test_mine_resource_estimation(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How is the estimation of mineral resources done?")
+    assert "Estimation of mineral resources is typically done" in response
+
+def test_mine_worker_safety(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What safety measures should miners follow?")
+    assert "Miners should follow a set of safety measures to ensure their well-being" in response
+
+def test_mine_tailings_dam_failure(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can tailings dam failures be prevented?")
+    assert "Preventing tailings dam failures involves" in response
+
+def test_mine_energy_efficiency(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can mining operations become more energy-efficient?")
+    assert "Mining operations can improve energy efficiency by" in response
+
+def test_mine_renewable_energy(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What role can renewable energy play in mining?")
+    assert "Renewable energy sources can play a significant role in reducing" in response
+
+def test_mine_future_technologies(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What emerging technologies are shaping the future of mining?")
+    assert "Emerging technologies that are shaping the future of mining" in response
+
+def test_mine_mineral_prices(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How do changes in mineral prices impact the mining industry?")
+    assert "Changes in mineral prices can have a significant impact" in response
+
+def test_mine_crisis_management(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What strategies should mining companies have for crisis management?")
+    assert "Mining companies should have comprehensive crisis management strategies" in response
+
+def test_mine_mercury_pollution(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can mining-related mercury pollution be mitigated?")
+    assert "Mitigating mining-related mercury pollution involves" in response
+
+def test_mine_water_management(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What are the best practices for water management in mining?")
+    assert "Best practices for water management in mining include" in response
+
+def test_mine_mining_ethics(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Why is ethical mining important?")
+    assert "Ethical mining is crucial for various reasons, including" in response
+
+def test_mine_tailings_storage(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How should tailings be stored safely in mining?")
+    assert "Safe storage of tailings in mining requires" in response
+
