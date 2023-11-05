@@ -78,6 +78,39 @@ def test_unknown_command(chatbot_fixture):
     assert response == "Unknown command. Type /help for available commands."
 
 
+def test_emergency_chat():
+    query = "Help! I need emergency assistance!"
+    conversation_string = get_conversation_string()
+    refined_query = query_refiner(conversation_string, query)
+    context = find_match(refined_query)
+    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+    assert response # Add your assertion logic here
+
+def test_negative_feedback():
+    query = "I didn't like the response you gave me."
+    conversation_string = get_conversation_string()
+    refined_query = query_refiner(conversation_string, query)
+    context = find_match(refined_query)
+    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+    assert response  # Add your assertion logic here
+
+def test_user_intent():
+    query = "Can you help me find a restaurant nearby?"
+    conversation_string = get_conversation_string()
+    refined_query = query_refiner(conversation_string, query)
+    context = find_match(refined_query)
+    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+    assert response  # Add your assertion logic here
+
+def test_joke_request():
+    query = "Tell me a joke!"
+    conversation_string = get_conversation_string()
+    refined_query = query_refiner(conversation_string, query)
+    context = find_match(refined_query)
+    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
+    assert response  # Add your assertion logic here
+
+
 def test_chatbot_response():
     query = "Hello, chatbot!"
     conversation_string = get_conversation_string()
