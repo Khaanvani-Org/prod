@@ -310,6 +310,36 @@ def test_uncommon_mining_terms(chatbot_fixture):
 def test_historical_mining_data(chatbot_fixture):
     response = chatbot_fixture.respond("What were the mining accident statistics for 2020?")
     assert "I'm sorry, I don't have access to historical accident statistics." in response
+
+
+def test_get_regulations_for_state(regulations_instance):
+    regulations = regulations_instance.get_regulations("California")
+    assert "California" in regulations
+    assert "Mining regulations in California include" in regulations
+
+def test_get_regulations_for_state_not_found(regulations_instance):
+    regulations = regulations_instance.get_regulations("NonexistentState")
+    assert regulations == "Regulations for 'NonexistentState' not found."
+
+def test_update_regulations(regulations_instance):
+    regulations_instance.update_regulations("California", "New regulations for California")
+    regulations = regulations_instance.get_regulations("California")
+    assert "New regulations for California" in regulations
+
+def test_add_new_state_regulations(regulations_instance):
+    regulations_instance.add_state_regulations("NewYork", "Mining regulations for New York")
+    regulations = regulations_instance.get_regulations("NewYork")
+    assert "Mining regulations for New York" in regulations
+
+def test_remove_state_regulations(regulations_instance):
+    regulations_instance.remove_state_regulations("California")
+    regulations = regulations_instance.get_regulations("California")
+    assert regulations == "Regulations for 'California' not found."
+
+def test_list_all_states(regulations_instance):
+    states = regulations_instance.list_states()
+    assert "California" in states
+    assert "NewYork" in states
 def test_code_coverage(chatbot_fixture):
     assert True
 
