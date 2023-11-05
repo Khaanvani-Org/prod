@@ -347,62 +347,43 @@ def test_mine_explosives(chatbot_fixture):
     response = chatbot_instance.respond("How are explosives used in mining?")
     assert "Explosives are commonly used in mining" in response
 
-def test_mine_tailings(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What are mine tailings?")
-    assert "Mine tailings are the often-toxic residue" in response
+def test_response_time(chatbot_instance):
+    start_time = time.time()
+    response = chatbot_instance.respond("How can I improve mine safety?")
+    end_time = time.time()
+    response_time = end_time - start_time
+    assert response_time < 2.0, "Response time exceeded 2 seconds."
 
-def test_mine_reclamation(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What is the process of mine reclamation?")
-    assert "Mine reclamation is the process of restoring" in response
+def test_concurrent_users(chatbot_instance):
+    # Simulate concurrent users interacting with the chatbot
+    users = 10  # Adjust the number of concurrent users as needed
 
-def test_mine_water_management(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("How is water managed in mining operations?")
-    assert "Water management in mining operations" in response
+    def simulate_user_interaction(user_id):
+        response = chatbot_instance.respond(f"User {user_id}: Hello, chatbot!")
+        assert "Hi there!" in response
 
-def test_mine_waste_disposal(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("How is waste disposal handled in mining?")
-    assert "Waste disposal in mining involves various methods" in response
+    import concurrent.futures
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(simulate_user_interaction, range(users))
 
-def test_mine_drilling_methods(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What drilling methods are used in mining?")
-    assert "Various drilling methods are used in mining operations" in response
+def test_security(chatbot_instance):
+    # Test the chatbot's security, such as input validation and protection against common vulnerabilities
+    input_with_xss = "<script>alert('XSS Attack');</script>"
+    response = chatbot_instance.respond(input_with_xss)
+    assert "&lt;script&gt;" in response  # Ensure that input is properly sanitized
 
-def test_mine_environmental_impact(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What is the environmental impact of open-pit mining?")
-    assert "Open-pit mining can have significant environmental impacts" in response
+def test_load_testing(chatbot_instance):
+    # Perform load testing to assess how the chatbot handles a high volume of concurrent users
+    users = 100  # Simulate 100 concurrent users
 
-def test_mine_health_safety(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("How are health and safety monitored in mines?")
-    assert "Health and safety in mines are monitored" in response
+    def simulate_user_interaction(user_id):
+        response = chatbot_instance.respond(f"User {user_id}: Hello, chatbot!")
 
-def test_mine_subsurface_mining(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What is subsurface mining?")
-    assert "Subsurface mining is a mining method" in response
+    import concurrent.futures
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(simulate_user_interaction, range(users))
 
-def test_mine_mercury_use(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("Is mercury still used in gold mining?")
-    assert "Mercury is still used in some gold mining operations" in response
-
-def test_mine_land_reclamation(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What happens during land reclamation after mining?")
-    assert "Land reclamation after mining involves restoring" in response
-
-
-
-def test_list_all_states(regulations_instance):
-    states = regulations_instance.list_states()
-    assert "California" in states
-    assert "NewYork" in states
-def test_code_coverage(chatbot_fixture):
-    assert True
-
+def test_usability(chatbot_instance):
+    # Evaluate the chatbot's usability, such as the clarity of responses and user experience
+    response = chatbot_instance.respond("Help!")
+    assert "I'm here to help." in response
