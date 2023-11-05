@@ -177,37 +177,6 @@ def test_unknown_command(chatbot_fixture):
     assert response == "Unknown command. Type /help for available commands."
 
 
-def test_emergency_chat():
-    query = "Help! I need emergency assistance!"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response # Add your assertion logic here
-
-def test_negative_feedback():
-    query = "I didn't like the response you gave me."
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response  # Add your assertion logic here
-
-def test_user_intent():
-    query = "should i go to doctor?"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response  # Add your assertion logic here
-
-def test_joke_request():
-    query = "Will my company help me with the correct aid?"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response  # Add your assertion logic here
 
     
 def test_invalid_input(chatbot_fixture):
@@ -229,72 +198,101 @@ def test_user_random_question(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("will I be paid for sick leave ?")
     assert response  # Add your assertion logic here
-
-def test_different_user_personality():
-    query = "Hey dude, what's up?"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response == "Hi there!"
-    
-def test_prop(chatbot_fixture):
+def test_emergency_chat(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("what are the equipments used in a mine site")
-    assert response == "Heavy equipment: Large mining trucks, hydraulic mining shovels, large dozers, electric rope shovels, rotary drill rigs, motor graders, large wheel loaders, and draglines "
+    response = chatbot_instance.respond("Help! I need emergency assistance!")
+    assert response == "I'm here to help. Please provide more details about the emergency."
 
-def test_prop(chatbot_fixture):
+def test_negative_feedback(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("what is the safe distance for humans during a blast")
-    assert response 
+    response = chatbot_instance.respond("I didn't like the response you gave me.")
+    assert response == "I'm sorry to hear that. Can you tell me what you didn't like, so I can improve?"
 
-def test_user_leave_question(chatbot_fixture):
+def test_user_intent(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("will I be paid for sick leave ?")
-    assert response  # Add your assertion logic here
+    response = chatbot_instance.respond("Should I go to a doctor for a minor injury?")
+    assert response == "It's a good idea to seek medical advice for any injury, no matter how minor. Your health is important."
 
-def test_user_randomquestion(chatbot_fixture):
+def test_joke_request(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("what is your name ?")
-    assert response  # Add your assertion logic here
+    response = chatbot_instance.respond("Tell me a joke!")
+    assert "Why did the chicken cross the road?" in response
 
-def test_user_random_question(chatbot_fixture):
+def test_incomplete_question(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("what is mining ?")
-    assert response  # Add your assertion logic here
+    response = chatbot_instance.respond("Can you help me with the following? I need assistance with...")
+    assert "Of course, I'm here to assist. Please provide more details about what you need help with." in response
 
-def test_user_random_question(chatbot_fixture):
+def test_thank_you(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("why are mining site located out of city ?")
-    assert response  # Add your assertion logic here
+    response = chatbot_instance.respond("Thank you for your help.")
+    assert response == "You're welcome! If you have more questions or need assistance, feel free to ask."
 
-def test_user_random_question(chatbot_fixture):
+def test_gibberish_input(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("what are the qualifications we need to work in a mine site?")
-    assert response  # Add your assertion logic here
+    response = chatbot_instance.respond("asdjfhauiwehf!@$&*@#")
+    assert response == "I'm sorry, but I couldn't understand your input. Please try rephrasing your question."
 
-def test_user_dynamite_question(chatbot_fixture):
+def test_user_location(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("why is dynamite used ?")
-    assert response  # Add your assertion logic here
-def test_userrandom_question(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("can a normal people visit the mining site?")
-    assert response  # Add your assertion logic here
+    response = chatbot_instance.respond("What's the nearest hospital to my location?")
+    assert response == "I'm sorry, but I don't have access to your location. Please search for the nearest hospital online or use a maps app."
 
-def test_user_randomquestion(chatbot_fixture):
+def test_user_privacy(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("who is PM?")
-    assert response  # Add your assertion logic here
+    response = chatbot_instance.respond("Are my conversations with the chatbot recorded?")
+    assert response == "No, your conversations are not recorded or stored."
 
-def test_user_safety_question(chatbot_fixture):
+def test_case_sensitivity(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("what are the safety measures used in sites?")
-    assert response  # Add your assertion logic here
-    
-def test_moreinfo_question(chatbot_fixture):
+    response = chatbot_instance.respond("How can I access HELP?")
+    assert response == "You can access help by typing '/help' or asking for assistance in your message."
+def test_mine_equipment(chatbot_fixture):
     chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("give me more info ?")
-    assert response  # Add your assertion logic here
+    response = chatbot_instance.respond("What are the essential mining equipment?")
+    assert "The essential mining equipment includes" in response
 
+def test_mine_safety(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can I improve safety in a mine site?")
+    assert "To improve safety in a mine site," in response
 
+def test_mine_accident(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What should I do in case of a mining accident?")
+    assert "In case of a mining accident," in response
+
+def test_mine_regulations(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What are the mining regulations in this region?")
+    assert "Mining regulations in this region may include" in response
+
+def test_mine_permit(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can I obtain a mining permit?")
+    assert "To obtain a mining permit, you should" in response
+
+def test_mine_environment(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What is the impact of mining on the environment?")
+    assert "Mining can have various environmental impacts," in response
+
+def test_mine_salary(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What is the average salary for a miner?")
+    assert "The average salary for a miner can vary" in response
+
+def test_mine_automation(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How is automation changing the mining industry?")
+    assert "Automation is revolutionizing the mining industry" in response
+
+def test_mine_future(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What does the future of mining look like?")
+    assert "The future of mining is expected to involve" in response
+
+def test_mine_sustainability(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can mining be more sustainable?")
+    assert "To make mining more sustainable," in response
