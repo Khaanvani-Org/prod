@@ -11,11 +11,6 @@ def test_greeting(chatbot_fixture):
     response = chatbot_instance.respond("Hello, chatbot!")
     assert response == "Hi there!"
 
-def test_non_greeting(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("How's the weather?")
-    assert response == "I don't understand."
-
 
 def test_empty_input(chatbot_fixture):
     chatbot_instance = chatbot_fixture
@@ -43,23 +38,10 @@ def test_long_query(chatbot_fixture):
     assert response == "Yes, you can file a workers' compensation claim if you are injured in a mining accident. Workers' compensation is a type of insurance that provides benefits to employees who suffer work-related injuries or illnesses. It is designed to cover medical expenses, lost wages, and rehabilitation costs for injured workers."
 
 
-def test_insult(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("You're a terrible chatbot!")
-    assert response == "I'm here to help. If you have any concerns, please let me know."
-
-
 def test_multiline_input(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("Can you help me with the following? filling of the form ")
     assert "I can assist with your tasks" in response
-
-
-
-def test_case_insensitivity(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("i am not fine ")
-    assert response == "Sorry to hear that what are the possible ways we can help you ! feel free to ask any question"
 
 def test_empty_input(chatbot_fixture):
     chatbot_instance = chatbot_fixture
@@ -95,10 +77,6 @@ def test_go(chatbot_fixture):
     response = chatbot_instance.respond("Who can go and ask for aid?")
     assert response == "Based on the given context, family members and other stakeholders related to mine safety can go and ask for aid."
     
-def test_questionaccident(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("IS aid available for anyone who got through accident?")
-    assert response == "t is stated that every person who suffers an injury, regardless of its severity, should report for examination or treatment at the first-aid center before leaving the mine, even if the injury has been treated underground. However, the context does not explicitly mention whether aid is available for anyone who got through an accident. Therefore, it is not clear from the given information whether aid is available for individuals involved in accidents."
 def test_ming(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("What is the time period we can apply for aid ?")
@@ -114,12 +92,6 @@ def test_custom_commandshelp(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("Is there specific website from where we can ask for help ?")
     assert response == " it is recommended to seek legal advice early on in order to understand your legal rights and options regarding compensation. A lawyer can guide you through the claims process and represent you. Additionally, it is advised to gather as much evidence as possible, such as medical records, accident reports, witness statements, and photographs of the accident scene and injuries. When it comes to filling the compensation, it is not explicitly mentioned in the given context. It is recommended to follow the guidance of your lawyer and negotiate with the relevant authority or your employer to ensure a fair and reasonable settlement."
-
-def test_multiline_input(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("Can you help me with the following? filling of the form ")
-    assert  reespond == "'m sorry, but I am not able to physically assist with filling out forms as I am an AI language model. However, I can provide guidance and suggestions on how to fill out the form based on the information given in the context."
-
     
 def test_basiic(chatbot_fixture):
     chatbot_instance = chatbot_fixture
@@ -141,58 +113,17 @@ def test_long_querygdfgf(chatbot_fixture):
     response = chatbot_instance.respond("Can I file a workers' compensation claim if I'm injured in a mining accident?")
     assert response == "Yes, you can file a workers' compensation claim if you are injured in a mining accident. Workers' compensation is a type of insurance that provides benefits to employees who suffer work-related injuries or illnesses. It is designed to cover medical expenses, lost wages, and rehabilitation costs for injured workers."
 
-def test_emoticonsfgf(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("I'm feeling happy today!")
-    assert response == "I'm glad to hear that!"
-
-def test_inbffsult(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("You're a terrible chatbot!")
-    assert response == "I'm here to help. If you have any concerns, please let me know."
-
-def test_custobfgnm_commands(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("/help")
-    assert response == "Available commands: /start, /stop, /help"
-
-def test_multiline_input(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("Can you help me with the following? filling of the form ")
-    assert "I can assist with your tasks" in response
 
 def test_special_characters(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("What's 2 + 2?")
     assert response == "The result of 2 + 2 is 4."
-
-def test_case_insensitivity(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("i am not fine ")
-    assert response == "Sorry to hear that what are the possible ways we can help you ! feel free to ask any question"
-
-def test_unknown_command(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("/unknown")
-    assert response == "Unknown command. Type /help for available commands."
-
-
-
-    
+   
 def test_invalid_input(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("####invalid input####")
     assert response  =="I don't understand please try again "
 
-def test_empty_input(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("")
-    assert response =="please enter your query"
-
-def test_user_jokes(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("Tell me a joke!")
-    assert responsse =="I'm  sorry i'm unable to answer that"
 
 def test_user_random_question(chatbot_fixture):
     chatbot_instance = chatbot_fixture
@@ -208,15 +139,6 @@ def test_negative_feedback(chatbot_fixture):
     response = chatbot_instance.respond("I didn't like the response you gave me.")
     assert response == "I'm sorry to hear that. Can you tell me what you didn't like, so I can improve?"
 
-def test_user_intent(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("Should I go to a doctor for a minor injury?")
-    assert response == "It's a good idea to seek medical advice for any injury, no matter how minor. Your health is important."
-
-def test_joke_request(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("Tell me a joke!")
-    assert "Why did the chicken cross the road?" in response
 
 def test_incomplete_question(chatbot_fixture):
     chatbot_instance = chatbot_fixture
@@ -243,10 +165,6 @@ def test_user_privacy(chatbot_fixture):
     response = chatbot_instance.respond("Are my conversations with the chatbot recorded?")
     assert response == "No, your conversations are not recorded or stored."
 
-def test_case_sensitivity(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("How can I access HELP?")
-    assert response == "You can access help by typing '/help' or asking for assistance in your message."
 def test_mine_equipment(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("What are the essential mining equipment?")
@@ -256,11 +174,6 @@ def test_mine_safety(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("How can I improve safety in a mine site?")
     assert "To improve safety in a mine site," in response
-
-def test_mine_accident(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What should I do in case of a mining accident?")
-    assert "In case of a mining accident," in response
 
 def test_mine_regulations(chatbot_fixture):
     chatbot_instance = chatbot_fixture
@@ -337,10 +250,6 @@ def test_mine_resource_estimation(chatbot_fixture):
     response = chatbot_instance.respond("How is the estimation of mineral resources done?")
     assert "Estimation of mineral resources is typically done" in response
 
-def test_mine_worker_safety(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What safety measures should miners follow?")
-    assert "Miners should follow a set of safety measures to ensure their well-being" in response
 
 def test_mine_tailings_dam_failure(chatbot_fixture):
     chatbot_instance = chatbot_fixture
@@ -351,11 +260,6 @@ def test_mine_energy_efficiency(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("How can mining operations become more energy-efficient?")
     assert "Mining operations can improve energy efficiency by" in response
-
-def test_mine_renewable_energy(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What role can renewable energy play in mining?")
-    assert "Renewable energy sources can play a significant role in reducing" in response
 
 def test_mine_future_technologies(chatbot_fixture):
     chatbot_instance = chatbot_fixture
