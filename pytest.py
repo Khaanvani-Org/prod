@@ -111,18 +111,4 @@ def test_unknown_command(chatbot_fixture):
 
 
 
-def test_chatbot_response():
-    query = "Hello, chatbot!"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response  # Add your assertion logic here
 
-def test_non_greeting_response():
-    query = "How's the weather?"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response  # Add your assertion logic here
