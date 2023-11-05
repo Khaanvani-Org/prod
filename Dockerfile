@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Install required Python packages
-RUN pip install streamlit streamlit_chat langchain sentence_transformers
+RUN pip install -r requirements.txt
 
 # Expose the port on which your Streamlit app will run
 EXPOSE 8501
