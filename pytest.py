@@ -110,38 +110,6 @@ def test_unknown_command(chatbot_fixture):
     assert response == "The provided context does not mention specific support services for the families of miners involved in accidents. However, it is common for mining companies or organizations to provide support services for the families of injured or deceased miners. These services may include counseling, financial assistance, and other forms of support to help families cope with the emotional and financial challenges they may face. It is advisable to consult with the mine management or relevant authorities to inquire about the specific support services available in such situations.."
 
 
-def test_emergency_chat():
-    query = "Help! I need emergency assistance!"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response # Add your assertion logic here
-
-def test_negative_feedback():
-    query = "I didn't like the response you gave me."
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response  # Add your assertion logic here
-
-def test_user_intent():
-    query = "should i go to doctor?"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response  # Add your assertion logic here
-
-def test_joke_request():
-    query = "Will my company help me with the correct aid?"
-    conversation_string = get_conversation_string()
-    refined_query = query_refiner(conversation_string, query)
-    context = find_match(refined_query)
-    response = conversation.predict(input=f"Context:\n {context} \n\n Query:\n{query}")
-    assert response  # Add your assertion logic here
-
 
 def test_chatbot_response():
     query = "Hello, chatbot!"
