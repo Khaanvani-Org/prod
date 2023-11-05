@@ -108,7 +108,46 @@ def test_unknown_command(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("Are there any support services for the families of miners involved in accidents?")
     assert response == "The provided context does not mention specific support services for the families of miners involved in accidents. However, it is common for mining companies or organizations to provide support services for the families of injured or deceased miners. These services may include counseling, financial assistance, and other forms of support to help families cope with the emotional and financial challenges they may face. It is advisable to consult with the mine management or relevant authorities to inquire about the specific support services available in such situations.."
+def test_go(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Who can go and ask for aid?")
+    assert response == "Based on the given context, family members and other stakeholders related to mine safety can go and ask for aid."
+    
+def test_questionaccident(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("IS aid available for anyone who got through accident?")
+    assert response == "t is stated that every person who suffers an injury, regardless of its severity, should report for examination or treatment at the first-aid center before leaving the mine, even if the injury has been treated underground. However, the context does not explicitly mention whether aid is available for anyone who got through an accident. Therefore, it is not clear from the given information whether aid is available for individuals involved in accidents."
+def test_ming(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What is the time period we can apply for aid ?")
+    assert response == " it does not mention a specific time period for applying for aid. The context only states that the owner, agent, or manager of the mine is required to send particulars of the incident to the relevant authority within seven days of the occurrence and within fifteen days of the injured person returning to duty. The availability and specific application process for aid may not be stated in this context."
 
+
+def test_long_queryask(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Is it feasible for the person to ask for gov support?")
+    assert response == ""
+
+
+def test_support(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Will government help me in getting support?")
+    assert response == "it is not explicitly stated whether it is feasible for the person to ask for government support. However, seeking guidance and assistance from a workers' union or support group may provide valuable information and assistance in understanding the available options for compensation or support from the government or authorities. It is recommended for the person to consult with these organizations for specific guidance and advice in their situation."
+
+def test_compan(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can i fill the compensation ?")
+    assert response == ""
+
+def test_custom_commandshelp(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Is there specific website from where we can ask for help ?")
+    assert response == " it is recommended to seek legal advice early on in order to understand your legal rights and options regarding compensation. A lawyer can guide you through the claims process and represent you. Additionally, it is advised to gather as much evidence as possible, such as medical records, accident reports, witness statements, and photographs of the accident scene and injuries. When it comes to filling the compensation, it is not explicitly mentioned in the given context. It is recommended to follow the guidance of your lawyer and negotiate with the relevant authority or your employer to ensure a fair and reasonable settlement."
+
+def test_multiline_input(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Can you help me with the following? filling of the form ")
+    assert  reespond == "'m sorry, but I am not able to physically assist with filling out forms as I am an AI language model. However, I can provide guidance and suggestions on how to fill out the form based on the information given in the context."
 
 
 
