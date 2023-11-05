@@ -95,7 +95,7 @@ def test_negative_feedback():
     assert response  # Add your assertion logic here
 
 def test_user_intent():
-    query = "Can you help me find a restaurant nearby?"
+    query = "should i go to doctor?"
     conversation_string = get_conversation_string()
     refined_query = query_refiner(conversation_string, query)
     context = find_match(refined_query)
@@ -103,7 +103,7 @@ def test_user_intent():
     assert response  # Add your assertion logic here
 
 def test_joke_request():
-    query = "Tell me a joke!"
+    query = "Will my company help me with the correct aid?"
     conversation_string = get_conversation_string()
     refined_query = query_refiner(conversation_string, query)
     context = find_match(refined_query)
