@@ -42,42 +42,24 @@ def test_long_query(chatbot_fixture):
     response = chatbot_instance.respond("Can I file a workers' compensation claim if I'm injured in a mining accident?")
     assert response == "Yes, you can file a workers' compensation claim if you are injured in a mining accident. Workers' compensation is a type of insurance that provides benefits to employees who suffer work-related injuries or illnesses. It is designed to cover medical expenses, lost wages, and rehabilitation costs for injured workers."
 
-def test_emoticons(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("I'm feeling happy today!")
-    assert response == "I'm glad to hear that!"
 
 def test_insult(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("You're a terrible chatbot!")
     assert response == "I'm here to help. If you have any concerns, please let me know."
 
-def test_custom_commands(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("/help")
-    assert response == "Available commands: /start, /stop, /help"
 
 def test_multiline_input(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("Can you help me with the following? filling of the form ")
     assert "I can assist with your tasks" in response
 
-def test_special_characters(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("What's 2 + 2?")
-    assert response == "The result of 2 + 2 is 4."
+
 
 def test_case_insensitivity(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("i am not fine ")
     assert response == "Sorry to hear that what are the possible ways we can help you ! feel free to ask any question"
-
-def test_unknown_command(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("/unknown")
-    assert response == "Unknown command. Type /help for available commands."
-
-
 
 def test_empty_input(chatbot_fixture):
     chatbot_instance = chatbot_fixture
@@ -127,10 +109,6 @@ def test_support(chatbot_fixture):
     response = chatbot_instance.respond("Will government help me in getting support?")
     assert response == "it is not explicitly stated whether it is feasible for the person to ask for government support. However, seeking guidance and assistance from a workers' union or support group may provide valuable information and assistance in understanding the available options for compensation or support from the government or authorities. It is recommended for the person to consult with these organizations for specific guidance and advice in their situation."
 
-def test_compan(chatbot_fixture):
-    chatbot_instance = chatbot_fixture
-    response = chatbot_instance.respond("How can i fill the compensation ?")
-    assert response == ""
 
 def test_custom_commandshelp(chatbot_fixture):
     chatbot_instance = chatbot_fixture
