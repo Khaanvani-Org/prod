@@ -1,5 +1,11 @@
 
-# Khaanvani Project Test 2
+# Khaanvani Project Test 
+------------------------------------------------------------------------------
+[![Security: Bandit](https://img.shields.io/badge/Security-Bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+![Dynamic Security: Wapiti](https://img.shields.io/badge/Dynamic_Security-Wapiti-red.svg)
+![Testing: Pytest](https://img.shields.io/badge/:Testing-Pytest-blue.svg)
+![Dynamic Testing: Code_Coverage](https://img.shields.io/badge/:Dynamic_Testing-Code_Coverage-green.svg)
+![IAC: Terraform](https://img.shields.io/badge/:IAC-Terraform-purple.svg)
 
 This repository hosts a Chatbot project that serves as an intelligent virtual assistant capable of responding to text queries related to various Acts, Rules, and Regulations applicable to the Mining industry. It's designed to make the information retrieval process more efficient and user-friendly for people in the mining sector.
 ## Features
@@ -11,39 +17,66 @@ This repository hosts a Chatbot project that serves as an intelligent virtual as
 
 ## Tech Stack
 
-Python
+-Python
 
-Natural Language Processing (NLP)
+-Natural Language Processing (NLP)
 
-Pinecone
+-Pinecone
 
-Tools:
+## Tools:
 
-Bandit for source code checking
+-Bandit for code vulnerability checking
 
-wapiti for dynamic
+-Wapiti for dynamic checking
 
-Selenium for testing
+-Pytest for testing
 
-Terraform for iac tool
+-Terraform for iac tool
+
 ## Demo
 Visit our site at [khaanvaani.streamlit.app](https://khaanvaani.streamlit.app/)
 
 
 
-## Our flowchart:
+## Our flowchart: Dev Repo
 ```mermaid
-flowchart LR;
-
-A[User] -->|Changes| B(Dev)
-B --> C{Bandit&Super-Linter Test Passed?}
-C -->|Success| D(Test)
-D -->E{Bandit,Super-Linter,Selnium,Wapiti Test Passed?} 
-E -->|Success| F(Prod)
+    gitGraph
+       commit id: "."
+       branch B1
+       checkout B1
+       commit id: "Commit Changes"
+       checkout main
+       checkout B1
+       checkout main
+       checkout B1
+       commit id:"Bandit Passed"
+       commit id:"Wapiti Passed"
+       checkout main
+       merge B1 id: "Merge " tag: "Changes Committed" type: REVERSE
+       commit id: "Push to Test"
+       checkout main
 
 ```
 
-
+## Our flowchart: Test Repo
+```mermaid
+    gitGraph
+       commit id: "."
+       branch B2
+       checkout B2
+       commit id: "Commit Changes"
+       checkout main
+       checkout B2
+       checkout main
+       checkout B2
+       commit id:"Selenium Tests Passed"
+       commit id:"Code Coverage Tests Passed"
+       checkout main
+       merge B2 id: "Merge " tag: "Changes Committed" type: REVERSE
+       commit id: "Push to Prod"
+       checkout main
+    
+```
 ## Future
 
 Regional languages
