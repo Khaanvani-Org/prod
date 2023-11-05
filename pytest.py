@@ -336,6 +336,69 @@ def test_remove_state_regulations(regulations_instance):
     regulations = regulations_instance.get_regulations("California")
     assert regulations == "Regulations for 'California' not found."
 
+
+def test_mine_ventilation(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Why is proper mine ventilation important?")
+    assert "Proper mine ventilation is crucial because" in response
+
+def test_mine_explosives(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How are explosives used in mining?")
+    assert "Explosives are commonly used in mining" in response
+
+def test_mine_tailings(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What are mine tailings?")
+    assert "Mine tailings are the often-toxic residue" in response
+
+def test_mine_reclamation(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What is the process of mine reclamation?")
+    assert "Mine reclamation is the process of restoring" in response
+
+def test_mine_water_management(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How is water managed in mining operations?")
+    assert "Water management in mining operations" in response
+
+def test_mine_waste_disposal(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How is waste disposal handled in mining?")
+    assert "Waste disposal in mining involves various methods" in response
+
+def test_mine_drilling_methods(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What drilling methods are used in mining?")
+    assert "Various drilling methods are used in mining operations" in response
+
+def test_mine_environmental_impact(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What is the environmental impact of open-pit mining?")
+    assert "Open-pit mining can have significant environmental impacts" in response
+
+def test_mine_health_safety(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How are health and safety monitored in mines?")
+    assert "Health and safety in mines are monitored" in response
+
+def test_mine_subsurface_mining(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What is subsurface mining?")
+    assert "Subsurface mining is a mining method" in response
+
+def test_mine_mercury_use(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Is mercury still used in gold mining?")
+    assert "Mercury is still used in some gold mining operations" in response
+
+def test_mine_land_reclamation(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What happens during land reclamation after mining?")
+    assert "Land reclamation after mining involves restoring" in response
+
+
+
 def test_list_all_states(regulations_instance):
     states = regulations_instance.list_states()
     assert "California" in states
