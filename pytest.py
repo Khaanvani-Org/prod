@@ -78,6 +78,38 @@ def test_unknown_command(chatbot_fixture):
     assert response == "Unknown command. Type /help for available commands."
 
 
+
+def test_empty_input(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Can miners receive psychological support after a traumatic accident?")
+    assert response == "I don't know. The provided context does not mention whether miners can receive psychological support after a traumatic accident."
+
+def test_help_command(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("What should I do if a coworker is injured in a mine?")
+    assert response == "Seek immediate medical attention for the injured coworker.Report the accident to your supervisor or mine management.Document the accident by taking photos or videos of the accident scene, the coworker's injuries, and any hazardous conditions that may have contributed to the incident.Collect contact information of any witnesses to the accident.Encourage the injured coworker to seek legal advice from an attorney who specializes in labor and mining laws.Ensure that the injured coworker is aware of their rights to a safe working environment and appropriate compensation under the relevant acts and regulations, such as the Mines Act, 1952 and the Workmen's Compensation Act, 1923.Offer emotional support to the injured coworker and encourage them to seek any necessary psychological support to cope with the traumatic experience."
+
+def test_urgent_request(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("I need immediate help!")
+    assert "emergency" in response  # Check if the response includes a reference to emergency assistance.
+
+def test_question_about_safety(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How can I stay safe in a mine?")
+    assert "safety measures" in response  # Check if the response provides safety information.
+
+def test_positive_feedback(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("How are mine accidents investigated, and what happens afterward?")
+    assert response == "The provided context does not specify how mine accidents are investigated or what happens afterward. Therefore, I don't know the details of the investigation process or the subsequent steps taken after a mine accident."
+
+def test_unknown_command(chatbot_fixture):
+    chatbot_instance = chatbot_fixture
+    response = chatbot_instance.respond("Are there any support services for the families of miners involved in accidents?")
+    assert response == "The provided context does not mention specific support services for the families of miners involved in accidents. However, it is common for mining companies or organizations to provide support services for the families of injured or deceased miners. These services may include counseling, financial assistance, and other forms of support to help families cope with the emotional and financial challenges they may face. It is advisable to consult with the mine management or relevant authorities to inquire about the specific support services available in such situations.."
+
+
 def test_emergency_chat():
     query = "Help! I need emergency assistance!"
     conversation_string = get_conversation_string()
