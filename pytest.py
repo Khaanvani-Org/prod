@@ -295,4 +295,19 @@ def test_mine_tailings_storage(chatbot_fixture):
     chatbot_instance = chatbot_fixture
     response = chatbot_instance.respond("How should tailings be stored safely in mining?")
     assert "Safe storage of tailings in mining requires" in response
+def test_mining_accident_severity(chatbot_fixture):
+    response = chatbot_fixture.respond("Assess the severity of an accident: There's been a cave-in, and a miner is trapped. What should I do?")
+    assert "This is a high-severity accident" in response
+
+def test_mining_regulations_by_location(chatbot_fixture):
+    response = chatbot_fixture.respond("What are the mining regulations in California?")
+    assert "In California, mining regulations are governed by the state's Department of Conservation." in response
+
+def test_uncommon_mining_terms(chatbot_fixture):
+    response = chatbot_fixture.respond("Explain what 'in situ leaching' means in mining.")
+    assert "In situ leaching, also known as solution mining" in response
+
+def test_historical_mining_data(chatbot_fixture):
+    response = chatbot_fixture.respond("What were the mining accident statistics for 2020?")
+    assert "I'm sorry, I don't have access to historical accident statistics." in response
 
