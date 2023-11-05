@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-app-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: my-app
@@ -14,34 +14,11 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: vidushimodi/pd-chatbot:v0 
+          image: vidushimodi/pd-chatbot:v0
           resources:
             limits:
-              cpu: 1
-              memory: 2Gi
+              memory: "256Mi"  # Example memory limit
+              cpu: "500m"       # Example CPU limit
             requests:
-              cpu: 100m
-              memory: 745Mi
-          port:
-            - containerPort: 8501
-          # resources:
-          #   limits:
-          #     memory: "256Mi"  # Example memory limit
-          #     cpu: "500m"       # Example CPU limit
-          #   requests:
-          #     memory: "128Mi"  # Example memory request
-          #     cpu: "250m"       # Example CPU request
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-app-service
-spec:
-  selector:
-    app: my-app
-  ports:
-    - protocol: TCP
-      port: 8501
-      targetPort: 8501
-  type: LoadBalancer
+              memory: "128Mi"  # Example memory request
+              cpu: "250m"       # Example CPU request
