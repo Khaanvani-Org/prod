@@ -4,7 +4,7 @@ on:
 
 jobs:
   Plan:
-    uses: Khaanvani-Org/prod/.github/workflows/deploy.yml@main
+    uses: Khaanvani-Org/prod/.github/workflows/aws_tf_plan.yml@main
     with:
       gh_environment: dev
     secrets:
@@ -12,7 +12,7 @@ jobs:
 
   Apply:
     needs: Plan
-    uses: Khaanvani-Org/prod/.github/workflows/deploy.yml@main
+    uses: Khaanvani-Org/prod/.github/workflows/aws_tf_apply.yml@main
     with:
       gh_environment: dev
     secrets:
