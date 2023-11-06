@@ -4,7 +4,7 @@ on:
 
 jobs:
   Plan:
-    uses: s-sukriti/Khaanvani-Org/prod/.github/workflows/deploy.yml@main
+    uses: eng21ct0048/Khaanvani-Org/prod/.github/workflows/deploy.yml@main
     with:
       gh_environment: dev
     secrets:
@@ -12,7 +12,7 @@ jobs:
 
   Apply:
     needs: Plan
-    uses: s-sukriti/Khaanvani-Orgprod/.github/workflows/deploy.yml@main
+    uses: eng21ct0048/Khaanvani-Orgprod/.github/workflows/deploy.yml@main
     with:
       gh_environment: dev
     secrets:
