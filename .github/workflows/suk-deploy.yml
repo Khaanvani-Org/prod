@@ -1,0 +1,37 @@
+name: Push File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:        
+  copy-file:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      pages: write 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: try.py
+      uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+      env:
+       API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }} # Use the correct environment variable name
+      with:
+        source_file: 'try.py'
+        destination_repo: 'Vidushimodi/demo3'
+        user_email: 'eng21ct0039@dsu.edu.in'
+        user_name: 's-sukriti'
+        
+    - name: readme.md
+      uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+      env:
+       API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }} # Use the correct environment variable name
+      with:
+        source_file: 'README.md'
+        destination_repo: 'Vidushimodi/demo3'
+        user_email: 'eng21ct0039@dsu.edu.in'
+        user_name: 's-sukriti'
