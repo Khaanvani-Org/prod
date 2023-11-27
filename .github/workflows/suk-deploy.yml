@@ -35,3 +35,13 @@ jobs:
         destination_repo: 'Vidushimodi/demo3'
         user_email: 'eng21ct0039@dsu.edu.in'
         user_name: 's-sukriti'
+
+    - name: src
+      uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+      env:
+       API_TOKEN_GITHUB: ${{ secrets.PAT_TOKEN }} # Use the correct environment variable name
+      with:
+        source_file: '/src'
+        destination_repo: 'Vidushimodi/demo3'
+        user_email: 'eng21ct0039@dsu.edu.in'
+        user_name: 's-sukriti'
