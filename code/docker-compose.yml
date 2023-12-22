@@ -6,7 +6,7 @@ services:
         target: ${MY_ENV}
     image: my-node-app:${MY_ENV}
     ports:
-      - "8501:${MY_PORT}"
+      - "8501:8000"
     volumes:
       - ./src:/app/src
     environment:

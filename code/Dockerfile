@@ -1,5 +1,5 @@
 # Use a base Python image
-FROM python:3.8
+FROM python:3.8 as prod
 
 # Set the working directory in the container
 WORKDIR /app
