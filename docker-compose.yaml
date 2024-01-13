@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  streamlit-app:
+    build:
+      context: .  # Path to the build context (directory containing Dockerfile)
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./prod:/app/prod    # Adjust the volume path based on your project structure
