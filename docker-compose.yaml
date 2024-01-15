@@ -5,6 +5,6 @@ services:
     build:
       context: .  # Path to the build context (directory containing Dockerfile)
     ports:
-      - "8501:8501"
+      - "3001:3001"
     volumes:
       - ./prod:/app/prod    # Adjust the volume path based on your project structure
