@@ -9,6 +9,6 @@ COPY . /app
 # Install other Python dependencies from requirements.txt if present
 RUN if [ -f "requirements.txt" ]; then pip install --no-cache-dir -r requirements.txt; fi
 
-EXPOSE 3001
+EXPOSE 8501
 
-CMD ["streamlit", "run", "main.py" "--server.port" "3001"]
+CMD ["streamlit", "run", "main.py"]
