@@ -1,8 +1,7 @@
-
-
 streamlit
 streamlit_chat
 langchain
-pinecone-client==2.2.4
-openai
 sentence_transformers
+pinecone-client
+openai
+
